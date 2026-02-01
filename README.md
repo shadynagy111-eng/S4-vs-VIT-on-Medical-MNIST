@@ -119,26 +119,6 @@ python train.py --model vit --dataset pathmnist --res 28
 
 ---
 
-## 📂 Repository Structure
-
-```text
-├── models/
-│   ├── vit.py           # Vision Transformer implementation
-│   └── s4d.py           # Diagonal State Space model implementation
-├── results/
-│   ├── organ/           # Confusion matrices and curves for OrganAMNIST
-│   ├── derma/           # Confusion matrices and curves for DermaMNIST
-│   └── path/            # Confusion matrices and curves for PathMNIST
-├── utils/
-│   ├── benchmarking.py  # Scripts for VRAM and Throughput measurement
-│   └── preprocessing.py # MedMNIST data loaders and scan strategies
-├── train.py             # Main training and validation script
-└── README.md            # Project overview and benchmarks
-
-```
-
----
-
 ## 📈 Evaluation Workflow
 
 The evaluation pipeline follows a standardized path from image sequence mapping to final performance metrics.
