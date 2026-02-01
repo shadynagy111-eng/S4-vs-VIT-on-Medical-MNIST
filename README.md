@@ -1,38 +1,67 @@
 # S4-vs-VIT-on-Medical-MNIST
-# S4 vs ViT on Medical-MNIST
+This GitHub README provides a professional overview of your comparative study, incorporating the architecture diagrams and dataset samples you provided.
 
-Repository for experiments comparing S4-based models and Vision Transformers on Medical-MNIST.
+---
 
-Contents
-- `src/` — code: data loaders, model wrappers, training and evaluation scripts
-- `configs/` — experiment configuration files (YAML)
-- `experiments/` — run scripts and results
-- `notebooks/` — exploratory analysis and visualizations
-- `checkpoints/`, `logs/` — saved models and training logs
+# Vision Transformer (ViT) vs. Structured State Space (S4D) for Medical Image Classification
 
-Quick start
-1. Create a virtual environment and install requirements:
-   ```
-   python -m venv .venv
-   source .venv/bin/activate
-   pip install -r requirements.txt
-   ```
+This repository contains the implementation and comparative analysis of **Vision Transformers (ViT)** and **Diagonal Structured State Space Models (S4D)** applied to various medical imaging modalities from the **MedMNIST** collection. We evaluate these architectures based on parameter efficiency, computational complexity (MACs), and hardware utilization (Peak VRAM/Throughput).
 
-2. Prepare dataset (example uses MedMNIST):
-   - See `src/data/dataloader.py` for automated download using the `medmnist` package.
+## 📊 Datasets: MedMNIST
 
-3. Run training (example):
-   ```
-   python src/train.py --config configs/default.yaml --model vit
-   # or
-   python src/train.py --config configs/default.yaml --model s4
-   ```
+We evaluate our models on three distinct medical datasets at  and  resolutions. These datasets represent various clinical challenges including CT scans, skin lesions, and histology.
 
-4. Evaluate:
-   ```
-   python src/evaluate.py --checkpoint checkpoints/best.pth --model vit
-   ```
+*Representative samples from DermaMNIST, OrganAMNIST, and PathMNIST.*
 
-Notes
-- ViT is implemented via the `timm` package. S4 requires an external implementation — see `src/models/s4_wrapper.py` for integration instructions.
-- Logging: TensorBoard and optional W&B integration (toggle in config).
+---
+
+## 🏗️ Model Architectures
+
+We compare two fundamentally different approaches to sequence and image modeling:
+
+### 1. Vision Transformer (ViT)
+
+The ViT baseline treats images as a sequence of patches, utilizing a global Multi-Head Self-Attention (MSA) mechanism. While highly effective at capturing long-range dependencies, it carries a significantly larger parameter footprint.
+
+### 2. Structured State Space (S4D)
+
+The S4D model treats image data as a discretized 1D signal. By using a diagonal state transition matrix, it achieves extreme parameter efficiency—maintaining a footprint nearly 110x smaller than the ViT baseline in our tests.
+
+---
+
+## 🚀 Key Benchmarks
+
+Our experiments across **OrganAMNIST**, **DermaMNIST**, and **PathMNIST** reveal critical trade-offs:
+
+| Dataset | Model (Res) | Params | Mult-Adds | Peak VRAM | Throughput |
+| --- | --- | --- | --- | --- | --- |
+| **OrganAMNIST** | S4D () | **0.20 M** | **103.57 MB** | 703.14 MB | **1766.26 s/s** |
+| **OrganAMNIST** | ViT () | 22.14 M | 122.45 MB | **684.91 MB** | 1126.30 s/s |
+| **DermaMNIST** | S4D () | **0.66 M** | 2.16 GB | 6745.21 MB | 176.13 s/s |
+| **DermaMNIST** | ViT () | 22.32 M | **410.26 MB** | **2318.66 MB** | **235.52 s/s** |
+
+### Key Observations:
+
+* **Parameter Efficiency**: S4D consistently uses  parameters compared to ViT's .
+* **Throughput**: S4D excels at lower resolutions (), significantly outperforming ViT in samples per second.
+* **Memory Constraints**: S4D exhibits higher **Peak VRAM** usage at  resolutions, indicating a memory bottleneck during internal state management for longer sequences.
+
+---
+
+## 📈 Performance Results
+
+Detailed confusion matrices and training trajectories for each dataset can be found in the `results/` directory.
+
+### OrganAMNIST Evaluation ()
+
+---
+
+## 🛠️ Experimental Setup
+
+* **Optimizer**: AdamW (Weight Decay: 0.01)
+* **Scheduler**: Cosine Annealing
+* **Learning Rate**: 
+* **Batch Size**: 64
+* **Epochs**: 5
+
+---
