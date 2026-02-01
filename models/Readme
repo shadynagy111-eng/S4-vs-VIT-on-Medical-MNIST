@@ -1,7 +1,21 @@
-📓 Experiment NotebooksThis directory contains the core implementation and experimental workflows for evaluating Structured State Space Models (S4D) and Vision Transformers (ViT) on medical imaging datasets.📂 Notebook CatalogNotebook FileDatasetResolutionFocus AreaS4D_OrganAMNIST_64.ipynbOrganAMNIST$64 \times 64$Scaling & Multi-class (11) stabilityS4D_DermaMNIST_64.ipynbDermaMNIST$64 \times 64$Fine-grained texture classificationS4D_PathMNIST_28.ipynbPathMNIST$28 \times 28$High-throughput sequence processingViT_Baseline_Comparison.ipynbAllMixedBaseline generation for MACs/VRAM🛠️ Typical WorkflowEach notebook is structured to facilitate reproducibility. By running the cells sequentially, the following pipeline is executed:1. Data PipelineIngestion: Downloads the specified MedMNIST dataset via the medmnist API.2D-to-1D Mapping: Implements the Raster Scan strategy to flatten spatial data into a sequence suitable for S4D processing.Normalization: Applies dataset-specific mean/std normalization.2. Model ArchitectureS4D Core: Initializes the Diagonal State Space kernel using the HiPPO matrix.Residual Blocks: Implements the linear projections and GELU activations shown in the architecture diagrams.Classification Head: Maps the sequence-aggregate representation to the class probability distribution.3. Evaluation & VisualizationBenchmarking: Measures Peak VRAM and Throughput using custom hooks.Plotting: Generates the Confusion Matrices and Training Trajectories found in the main paper.🚀 How to RunLocal EnvironmentEnsure you have the dependencies installed as per the root requirements.txt:Bashpip install -r ../requirements.txt
-jupyter notebook
-Google ColabTo run these on Google Colab,
-upload the notebook and 
-ensure you install the S4 library at the start of the session:
-Python!pip install medmnist
-!pip install git+https://github.com/state-spaces/s4.git
+🛠️ Typical Workflow
+Each notebook is structured to facilitate reproducibility. By running the cells sequentially, the following pipeline is executed:
+
+1. Data Pipeline
+Ingestion: Downloads the specified MedMNIST dataset via the medmnist API.
+
+2D-to-1D Mapping: Implements the Raster Scan strategy to flatten spatial data into a sequence suitable for S4D processing.
+
+Normalization: Applies dataset-specific mean/std normalization.
+
+2. Model Architecture
+S4D Core: Initializes the Diagonal State Space kernel using the HiPPO matrix.
+
+Residual Blocks: Implements the linear projections and GELU activations shown in the architecture diagrams.
+
+Classification Head: Maps the sequence-aggregate representation to the class probability distribution.
+
+3. Evaluation & Visualization
+Benchmarking: Measures Peak VRAM and Throughput using custom hooks.
+
+Plotting: Generates the Confusion Matrices and Training Trajectories found in the main paper.
