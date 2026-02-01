@@ -57,6 +57,9 @@ Our experiments across **OrganAMNIST**, **DermaMNIST**, and **PathMNIST** reveal
 ## 📈 Performance Results
 
 Detailed confusion matrices and training trajectories for each dataset can be found in the `results/` directory.
+
+## DermaMnist Evaluation 
+
 <img width="997" height="413" alt="combined_sharp_derma_horizontal" src="https://github.com/user-attachments/assets/37508e8c-a2e1-4b2e-a1fc-31462a29c524" />
 
 
