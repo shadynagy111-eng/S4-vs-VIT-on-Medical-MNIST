@@ -1,0 +1,8 @@
+# 1. Install general dependencies
+pip install -r requirements.txt
+
+# 2. Install the specialized S4 library for the S4D kernel
+pip install git+https://github.com/state-spaces/s4.git
+
+# 3. Install MedMNIST to download the data
+python -m medmnist download --size=all
