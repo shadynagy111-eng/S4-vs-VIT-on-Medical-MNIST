@@ -1,0 +1,25 @@
+# --- Core Deep Learning ---
+torch>=2.0.0
+torchvision>=0.15.0
+torchaudio
+
+# --- Medical Datasets ---
+medmnist>=3.0.0
+
+# --- S4D & State Space Models ---
+einops>=0.6.0
+opt_einsum
+# Note: mamba-ssm or s4 (from state-spaces/s4) often requires 
+# manual installation if you want the optimized CUDA kernels.
+# pip install git+https://github.com/state-spaces/s4.git
+
+# --- Performance Logging & Benchmarking ---
+fvcore       # For Mult-Adds (MACs) and Flop counting
+tqdm         # Progress bars for training
+pandas       # For results table management
+matplotlib   # For confusion matrices and trajectories
+scikit-learn # For F1-score and AUC metrics
+Pillow       # For image preprocessing
+
+# --- Utilities ---
+fire         # For simplified command line arguments
