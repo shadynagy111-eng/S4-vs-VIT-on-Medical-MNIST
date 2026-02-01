@@ -65,6 +65,12 @@ Detailed confusion matrices and training trajectories for each dataset can be fo
 
 ### OrganAMNIST Evaluation ()
 
+<img width="997" height="413" alt="combined_sharp_horizontal" src="https://github.com/user-attachments/assets/14b1795e-9521-414f-bd4b-ba56bcd5e753" />
+
+## PathMNIST Evaluation ()
+<img width="997" height="413" alt="combined_sharp_path_horizontal" src="https://github.com/user-attachments/assets/b52a7ea8-55a0-4cf7-ab63-d5aa5bbcb45e" />
+
+
 ---
 
 ## 🛠️ Experimental Setup
