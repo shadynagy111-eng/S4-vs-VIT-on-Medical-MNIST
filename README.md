@@ -41,10 +41,10 @@ Our experiments across **OrganAMNIST**, **DermaMNIST**, and **PathMNIST** reveal
 
 | Dataset | Model (Res) | Params | Mult-Adds | Peak VRAM | Throughput |
 | --- | --- | --- | --- | --- | --- |
-| **OrganAMNIST** | S4D () | **0.20 M** | **103.57 MB** | 703.14 MB | **1766.26 s/s** |
-| **OrganAMNIST** | ViT () | 22.14 M | 122.45 MB | **684.91 MB** | 1126.30 s/s |
-| **DermaMNIST** | S4D () | **0.66 M** | 2.16 GB | 6745.21 MB | 176.13 s/s |
-| **DermaMNIST** | ViT () | 22.32 M | **410.26 MB** | **2318.66 MB** | **235.52 s/s** |
+| **OrganAMNIST** | S4D (28X28) | **0.20 M** | **103.57 MB** | 703.14 MB | **1766.26 s/s** |
+| **OrganAMNIST** | ViT (28X28) | 22.14 M | 122.45 MB | **684.91 MB** | 1126.30 s/s |
+| **DermaMNIST** | S4D (28X28) | **0.66 M** | 2.16 GB | 6745.21 MB | 176.13 s/s |
+| **DermaMNIST** | ViT (28X28) | 22.32 M | **410.26 MB** | **2318.66 MB** | **235.52 s/s** |
 
 ### Key Observations:
 
