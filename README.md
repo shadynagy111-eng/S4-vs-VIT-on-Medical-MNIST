@@ -10,6 +10,7 @@ This repository contains the implementation and comparative analysis of **Vision
 ## 📊 Datasets: MedMNIST
 
 We evaluate our models on three distinct medical datasets at  and  resolutions. These datasets represent various clinical challenges including CT scans, skin lesions, and histology.
+<img width="1479" height="511" alt="Dataset" src="https://github.com/user-attachments/assets/f13e743c-e651-44e9-8bc7-cba3dda504c7" />
 
 *Representative samples from DermaMNIST, OrganAMNIST, and PathMNIST.*
 
