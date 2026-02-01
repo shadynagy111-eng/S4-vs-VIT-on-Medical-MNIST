@@ -80,5 +80,87 @@ Detailed confusion matrices and training trajectories for each dataset can be fo
 * **Learning Rate**: 
 * **Batch Size**: 64
 * **Epochs**: 5
+---
+To complete your repository, here is the **"Getting Started"** and **"Repository Structure"** section to follow the previous content. This will help users navigate your code and reproduce your results.
 
 ---
+
+## 🛠️ Getting Started
+
+### 1. Prerequisites
+
+Ensure you have Python 3.8+ and a CUDA-capable GPU for performance benchmarking.
+
+```bash
+pip install torch torchvision torchaudio medmnist matplotlib numpy
+
+```
+
+### 2. Dataset Preparation
+
+The project utilizes the **MedMNIST v2** library. Datasets are automatically downloaded and preprocessed upon first execution of the training scripts.
+
+* **OrganAMNIST**: Abdominal CT slices.
+* **DermaMNIST**: Skin lesion images.
+* **PathMNIST**: Histology images.
+
+### 3. Running the Models
+
+To train and evaluate a specific model-resolution pair, use the provided scripts:
+
+```bash
+# Example: Train S4D on OrganAMNIST at 64x64
+python train.py --model s4d --dataset organmnist --res 64
+
+# Example: Train ViT on PathMNIST at 28x28
+python train.py --model vit --dataset pathmnist --res 28
+
+```
+
+---
+
+## 📂 Repository Structure
+
+```text
+├── models/
+│   ├── vit.py           # Vision Transformer implementation
+│   └── s4d.py           # Diagonal State Space model implementation
+├── results/
+│   ├── organ/           # Confusion matrices and curves for OrganAMNIST
+│   ├── derma/           # Confusion matrices and curves for DermaMNIST
+│   └── path/            # Confusion matrices and curves for PathMNIST
+├── utils/
+│   ├── benchmarking.py  # Scripts for VRAM and Throughput measurement
+│   └── preprocessing.py # MedMNIST data loaders and scan strategies
+├── train.py             # Main training and validation script
+└── README.md            # Project overview and benchmarks
+
+```
+
+---
+
+## 📈 Evaluation Workflow
+
+The evaluation pipeline follows a standardized path from image sequence mapping to final performance metrics.
+
+1. **Image Flattening**: 2D images are converted into 1D sequences via Raster Scan.
+2. **Architectural Processing**: Data passes through S4D kernels or Multi-Head Attention blocks.
+3. **Metrics Extraction**: Automated logging of MACs (Mult-Adds), VRAM utilization, and classification accuracy.
+
+---
+
+## 📜 Citation
+
+If you use this work or the benchmarks provided, please cite our comparative study:
+
+```bibtex
+@article{vit_vs_s4d_medmnist2026,
+  title={Comparative Analysis of ViT and S4D in Medical Imaging: Efficiency and Scaling},
+  author={Your Name/Research Group},
+  year={2026}
+}
+
+```
+
+---
+
